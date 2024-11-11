@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(231, 225, 231);
+  padding: 2%;
+  position: sticky;
+  top: 0; /* Becomes "fixed" at the top of the viewport when scrolling */
+}
+
+.header div:nth-child(1) {
+  width: 15%;
+  color: blueviolet;
+}
+
+.header div:nth-child(2) {
+  width: 15%;
+}
+.header div:nth-child(3) {
+  width: 60%;
+  margin-left: 4%;
+}
+.header div:nth-child(4) {
+  width: 5%;
+}
+.header div:nth-child(5) {
+  width: 5%;
+}
+
+.header div:nth-child(3) input {
+  width: 95%; /* Full width */
+  padding: 5px 10px 10px 10px; /* Padding with extra space for the icon */
+  font-size: 16px; /* Font size */
+  border: 2px solid #ccc; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box; /* Include padding and border in width/height */
+  /* background-image: url("https://img.icons8.com/ios-filled/50/000000/search.png"); /* Search icon URL */
+  /* background-repeat: no-repeat; Prevent repeating the icon */
+  /* background-position: left center; Position the icon on the right */
+  /* background-size: 20px 20px; Adjust the size of the icon */
+}
