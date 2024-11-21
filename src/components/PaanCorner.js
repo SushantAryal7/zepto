@@ -1,9 +1,9 @@
 import React from "react";
-import './PaanCorner.css'
+import "./PaanCorner.css";
 
 function PaanCorner() {
   return (
-    <button class='paan'>
+    <button className="paan">
       <h1>Paan Corner</h1>
       <h3>Smoking Accesseries, mint & more</h3>
       <p>explore now</p>

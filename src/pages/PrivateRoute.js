@@ -4,15 +4,20 @@ import { Outlet, useNavigate } from "react-router-dom";
 function PrivateRoute() {
   const [giveAccess, setGiveAccess] = useState(null);
   const navigate = useNavigate();
+  const local = JSON.parse(localStorage.getItem("zeptoLogin"));
 
   useEffect(() => {
-    const local = JSON.parse(localStorage.getItem("zeptoLogin"));
     if (local) {
+      console.log("local", local);
       setGiveAccess(local);
     } else {
+      console.log("local  else", local);
+
       navigate("/login");
     }
-  }, [navigate]);
+  }, [navigate, local]);
+
+  console.log("local", local);
 
   if (giveAccess === null) {
     return null;

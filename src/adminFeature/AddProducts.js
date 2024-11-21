@@ -4,6 +4,8 @@ import "./AddProducts.css";
 import { firestore } from "../firebase/firebase";
 import { getProduct } from "../redux/productListSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
 import {
   addProduct,
   fetchProducts,
@@ -17,6 +19,10 @@ function AddProducts() {
   const [category, setCatogery] = useState("");
   const [updateButton, setUpdateButton] = useState(false);
   //   const [image, setImage] = useState(null);
+
+  // const [file, setFile] = useState(null);
+  // const [progress, setProgress] = useState(0);
+  // const [url, setUrl] = useState("");
 
   const dispatch = useDispatch();
   const productss = useSelector((state) => state.productList.products);

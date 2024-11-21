@@ -15,12 +15,16 @@ const Login = () => {
 
   const loginHandler = async (event) => {
     event.preventDefault();
-    const action = await dispatch(loginUser({ email, password }));
-    if (loginUser.fulfilled.match(action)) {
-      localStorage.setItem("zeptoLogin", JSON.stringify(email));
-      navigate("/private/addproduct"); // Navigate to home on successful login
-    } else {
-      alert("please login with correct crediantial");
+    try {
+      const action = await dispatch(loginUser({ email, password }));
+      if (loginUser.fulfilled.match(action)) {
+        localStorage.setItem("zeptoLogin", JSON.stringify(email));
+        navigate("/private/addproduct"); // Navigate to home on successful login
+      } else {
+        alert("please login with correct crediantial");
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -54,9 +58,9 @@ const Login = () => {
 
           <button type="submit">Login</button>
         </form>
-        {/* <p>
+        <p>
           Don't have an account? <Link to="/signup">Sign Up</Link>
-        </p> */}
+        </p>
       </div>
     </Fragment>
   );

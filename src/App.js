@@ -11,8 +11,17 @@ import Admin from "./pages/Admin";
 import { auth } from "./firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import Home from "./pages/Home";
+import Modal from "./modal/Modal";
+import { useSelector } from "react-redux";
+
 function App() {
   const [user, setUser] = useState("");
+  const showcart = useSelector((state) => state.cart.showCart);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (users) => {
@@ -28,6 +37,11 @@ function App() {
   return (
     <Fragment>
       <Router>
+        
+          <Modal>
+            <Cart />
+          </Modal>
+        
         <Routes>
           {/* <Route path="/" element={user ? <ProductList /> : <Login />} /> */}
           <Route path="/" element={<Home />} />

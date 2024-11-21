@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../redux/productListSlice";
 import { addItem } from "../redux/CartSlice";
+import Card from "../components/Card";
 
 function ProductList() {
   let [filterProduct, setFilterProduct] = useState([]);
@@ -28,29 +29,30 @@ function ProductList() {
   }, [dispatch, filterText, products]);
 
   return (
-    <div>
-      <label>Filter According you</label>
-      <input
-        type="text"
-        value={filterText}
-        onChange={(e) => setFilterText(e.target.value)}
-      />
-      <ul>
-        {filterProduct.map((product) => (
-          <li>
-            <span>{product.product}</span>----<span>{product.price}</span>------
-            <span>{product.category}</span>
-            <button
-              onClick={() => {
-                AddToCart(product);
-              }}
-            >
-              Add to cart
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    // <div>
+    //   <label>Filter According you</label>
+    //   <input
+    //     type="text"
+    //     value={filterText}
+    //     onChange={(e) => setFilterText(e.target.value)}
+    //   />
+    <ul className="cards">
+      {filterProduct.map((product) => (
+        // <li>
+        //   <span>{product.product}</span>----<span>{product.price}</span>------
+        //   <span>{product.category}</span>
+        <Card AddToCart={() => AddToCart(product)} product={product} />
+        //   <button
+        //     onClick={() => {
+        //       AddToCart(product);
+        //     }}
+        //   >
+        //     Add to cart
+        //   </button>
+        // </li>
+      ))}
+    </ul>
+    // </div>
   );
 }
 
